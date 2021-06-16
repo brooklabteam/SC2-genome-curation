@@ -8,11 +8,11 @@ Step-by-step instructions for genome curation on a new sequencing project are as
 
  1. Create a parent folder for the new IDSeq project. Download all "metadata" folders for each genome in that project, unzip, and store as subfolders in the parent folder. Each genome's metadata folder must currently be downloaded individually, though the IDseq team is working to amend this. This means you will have to individually click on each genome, selecting the "Download All" option in the upper right, unzip the folder and move it manually into your parent folder.
  
-![](genome_download.png)
+![](images/genome_download.png)
 
 Once this is done, double check that you got all the genomes from the project! You can skip downloads for any genomes that hjave poor covrage (e.g. <85%). They will look like this--no need to download!
 
-![](poor_coverage_genome.png)
+![](images/poor_coverage_genome.png)
 
 **If you skip a genome, please update the "genomes-for-resequencing.csv" file in this database with the run name and ID_Viro for the sample in question.**
 
