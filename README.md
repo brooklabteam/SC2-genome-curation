@@ -40,11 +40,18 @@ Once this is done, double check that you got all the genomes from the project! Y
 
 ---
 
-4. Take the output file "seq_check_manual.csv" and manually check the Ns and ambiguities in [Geneious](geneious.com). Once completed, generate an edited tsv file with the manually edited consensus genome in one column. Do this individually for all the newly sequenced folders in your dataset and store the manually edited file in the same folder as "SEQNAME_all_manual.tsv".
+4. Take the output file "seq_check_manual.csv" and manually check the Ns and ambiguities in [Geneious](geneious.com) by:
+a. Make a sub-folder for each genome in Geneious.
+b. Add the reference sequence (MN908947.3.fa) to each subfolder, then add the "aligned_reads.bam" file. The reads should map to the reference.
+c. If you wish, you can also add the corresponding .bed file, but I often find it is easier to just scroll through the .tsv file.
+d. Copy the newly formed .tsv file into a new file with the name "SEQNAME_all_manual.tsv" (so same filename as before but with an appendix).
+e. Within that .tsv, add a column to the right of "cns" that duplicates "cns" but has the header "cns_manual". 
+f. Then scroll down the "flagN" and "flagAmbiguous" columns for any values of 1 and examine these genome positions in Genious. If the nucleotide is marked as "N", you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. As a rule, we will only accept manual edits that are uncontested (i.e. 100% agreement at that site) down to 3 reads per site. If the site is an ambiguity, you can resolve this manually in the same way, but only if you are confident that the selected conclusion is erroneous. 
+g. Continue this process until you have examined ALL the Ns and Ambiguities in the genome, then save the "SEQNAME_all_manual.tsv" file.
 
 ---
 
-5. Then, pull the manually edited tsvs from all folders into the parent folder, using this script:
+5. Then, from terminal in the parent folder, pull the manually edited tsvs from all folders into the parent folder, using this script:
 
 ```
 mkdir manual-tsv
