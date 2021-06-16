@@ -81,7 +81,7 @@ sum.dat <- data.table::rbindlist(out.sum)
 
 #and load the metadata from previous run
 seq.sum <- read.csv(file="sequence_summary.csv", header = T, stringsAsFactors = F)
-seq.merge <- dplyr::select(seq.sum, ID_Viro, seq_name, Ct_Orf1, sample_collection_date)
+seq.merge <- dplyr::select(seq.sum, ID_Viro, seq_name, Ct, sample_collection_date)
 
 sum.dat.merge <- merge(x=sum.dat, y=seq.merge, by="seq_name", all.x=TRUE)
 #sort by date

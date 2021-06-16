@@ -20,17 +20,17 @@ meta.df <- meta.df[!is.na(meta.df$ID_IDSeq),]
 
 #merge Ct and IP names
 head(meta.df)
-merge.dat <- dplyr::select(meta.df, ID_IDSeq, ID_Viro, sample_collection_date, Ct_Orf1)
+merge.dat <- dplyr::select(meta.df, ID_IDSeq, ID_Viro, sample_collection_date, Ct)
 names(merge.dat)[1] <- "seq_name"
 new.df <- merge(x=compiled_tsv, y = merge.dat, all.x=TRUE, by= "seq_name")
 
 
 #now arrange by Ct and plot
-new.df <- arrange(new.df, Ct_Orf1, seq_name, position)
+new.df <- arrange(new.df, Ct, seq_name, position)
 
 
 #plot rpm on a log10 scale
-new.df$label <- paste0(paste0(paste0(paste0(paste0(paste0(paste0("Ct_Orf1=",new.df$Ct_Orf1), "\n"), "IPM-ID="), new.df$ID_Viro), "\n"), "CZB-ID="), new.df$seq_name)
+new.df$label <- paste0(paste0(paste0(paste0(paste0(paste0(paste0("Ct=",new.df$Ct), "\n"), "IPM-ID="), new.df$ID_Viro), "\n"), "CZB-ID="), new.df$seq_name)
 new.df$rpm <- as.numeric(new.df$rpm)
 new.df$position <- as.numeric(new.df$position)
 #log scale
@@ -54,16 +54,16 @@ new.df$reads <- as.numeric(new.df$reads)
 new.df$flagN <- as.numeric(new.df$flagN)
 new.df$flagAmbiguous <- as.numeric(new.df$flagAmbiguous)
 new.df$flagSNP <- as.numeric(new.df$flagSNP)
-tsv.sum = ddply(new.df, .(ID_Viro, seq_name, total_reads, coverage, n_missing, Ct_Orf1, sample_collection_date, gender, age, sample_type, symptomatic, district, province), summarise, avg_depth = mean(reads), totN=sum(flagN), totAmbiguous=sum(flagAmbiguous), totSNP=sum(flagSNP))
+tsv.sum = ddply(new.df, .(ID_Viro, seq_name, total_reads, coverage, n_missing, Ct, sample_collection_date), summarise, avg_depth = mean(reads), totN=sum(flagN), totAmbiguous=sum(flagAmbiguous), totSNP=sum(flagSNP))
 
 #and save as a csv file
-write.csv(tsv.sum, file = "sequence_summary.csv")
+write.csv(tsv.sum, file = "sequence_summary.csv", row.names=F)
 
 #then, also write a summary that highlights where you need to go look manually in Geneious
 tsv.view <- subset(new.df, flagN!=0 | flagAmbiguous!=0)
 tsv.view <- dplyr::select(tsv.view, seq_name, ID_Viro, coverage, position, reads, rpm, refseq, cns, flagN, flagAmbiguous)
 
-write.csv(tsv.view, file ="seq_check_manual.csv")
+write.csv(tsv.view, file ="seq_check_manual.csv", row.names=F)
 
 #now split and make bed file for annotation tracks to examine in Geneious
 split.dat <- dlply(tsv.view, .(seq_name))
