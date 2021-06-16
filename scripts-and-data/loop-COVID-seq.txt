@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#First, run copy-scripts.R to put copies of "sequence-pipeline.R" and "MN908947.3.fa" in each subdirectory
+
+Rscript copy-scripts.R
+
+#then, loop over all these names to run your "sequence-pipeline.R" script within each subfolder
+
+for d in */ ; do
+    [[ ! -d "$d" ]] && continue
+    echo "$d"
+    cd "$d"
+    Rscript sequence-pipeline.R
+    cd "$OLDPWD"
+done
+
+
+#then, once these finish, you can pull all of the newly generated tsv files into the parent file and concatenate them into one with this line:
+
+cat *_outputs/*_all.tsv > all_seq.tsv
+
+#note that this will concatenate the header multiple times, so you will need to remove it in the next step where you link to metadata (with Ct) and generate rpm plot with another R script.
+#also, note that you NEED the metadata file in here to run this
+
+Rscript merge-meta-plot.R
+
+#from here, take the output script "seq_check_manual.csv" and the .bed files of the locations for the Ns and the ambiguous bases and manually check them in Geneious. Once completed, generate an edited consensus genome file and use it in the final R script to compare again against the reference and generate final files, including a composite mutation tracker.
+
+
+

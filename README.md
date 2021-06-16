@@ -18,15 +18,15 @@ Once this is done, double check that you got all the genomes from the project! Y
 
 ---
 
-2. Move the following files into the parent folder (all files are stored in this github repo, with a blank example of the meta_df.csv file):
+2. Move the following files into the parent folder (all files are stored in the "scripts-and-data" subfolder of this github repo, with a blank example of the meta_df.csv file):
 
-* copy-scripts.R
-* sequence-pipeline.R
-* MN908947.3.fa
-* merge-meta-plot.R
-* loop-COVID-seq.txt
-* meta_df.csv
-* make-manual-cns.R
+- copy-scripts.R
+- sequence-pipeline.R
+- MN908947.3.fa
+- merge-meta-plot.R
+- loop-COVID-seq.txt
+- meta_df.csv
+- make-manual-cns.R
 
 *The "meta_df.csv" folder should include the appropriately structured metadata. The following columns are REQUIRED for the script to run: ID_IDSeq, ID_Viro, sample_collection_date, and Ct_Orf1. A blank meta_df.csv is included here for reference.*
 
@@ -41,13 +41,13 @@ Once this is done, double check that you got all the genomes from the project! Y
 ---
 
 4. Take the output file "seq_check_manual.csv" and manually check the Ns and ambiguities in [Geneious](geneious.com) by:
-a. Make a sub-folder for each genome in Geneious.
-b. Add the reference sequence (MN908947.3.fa) to each subfolder, then add the "aligned_reads.bam" file. The reads should map to the reference.
-c. If you wish, you can also add the corresponding .bed file, but I often find it is easier to just scroll through the .tsv file.
-d. Copy the newly formed .tsv file into a new file with the name "SEQNAME_all_manual.tsv" (so same filename as before but with an appendix).
-e. Within that .tsv, add a column to the right of "cns" that duplicates "cns" but has the header "cns_manual". 
-f. Then scroll down the "flagN" and "flagAmbiguous" columns for any values of 1 and examine these genome positions in Genious. If the nucleotide is marked as "N", you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. As a rule, we will only accept manual edits that are uncontested (i.e. 100% agreement at that site) down to 3 reads per site. If the site is an ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous. In the event of an insertion, add a row in the .tsv file and type "insertion" in the "position" column such that the basepairs mapping to the reference genome still maintain the reference genome's official position number.
-g. Continue this process until you have examined ALL the Ns and Ambiguities in the genome, then save the "SEQNAME_all_manual.tsv" file.
+- Make a sub-folder for each genome in Geneious.
+- Add the reference sequence (MN908947.3.fa) to each subfolder, then add the "aligned_reads.bam" file. The reads should map to the reference.
+- If you wish, you can also add the corresponding .bed file, but I often find it is easier to just scroll through the .tsv file.
+- Copy the newly formed .tsv file into a new file with the name "SEQNAME_all_manual.tsv" (so same filename as before but with an appendix).
+- Within that .tsv, add a column to the right of "cns" that duplicates "cns" but has the header "cns_manual". 
+- Then scroll down the "flagN" and "flagAmbiguous" columns for any values of 1 and examine these genome positions in Genious. If the nucleotide is marked as "N", you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. As a rule, we will only accept manual edits that are uncontested (i.e. 100% agreement at that site) down to 3 reads per site. If the site is an ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous. In the event of an insertion, add a row in the .tsv file and type "insertion" in the "position" column such that the basepairs mapping to the reference genome still maintain the reference genome's official position number.
+- Continue this process until you have examined ALL the Ns and Ambiguities in the genome, then save the "SEQNAME_all_manual.tsv" file.
 
 ---
 
