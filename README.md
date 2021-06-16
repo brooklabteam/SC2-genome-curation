@@ -4,7 +4,9 @@ This site hosts the scripts needed to curate SARS-CoV-2 consensus genomes produc
 
 Step-by-step instructions for genome curation on a new sequencing project are as follows:
 
- 1. Download all "metadata" folders for new genomes in IDseq, unzip, and store one parent folder. Each genome's metadata folder must currently be downloaded individually, though the IDseq team is working to amend this.
+ 1. Download all "metadata" folders for new genomes in IDseq, unzip, and store one parent folder. Each genome's metadata folder must currently be downloaded individually, though the IDseq team is working to amend this. This means, individually clicking on each genome, selecting the "Download All" option in the upper right, unzipping the folder and moving it manually into your parent folder.
+ 
+![](genome_download.png)
 
 2. Move the following files into the parent folder (all files are stored in this github repo, with a blank example of the meta_df.csv file):
 
