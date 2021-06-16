@@ -26,7 +26,7 @@ Step-by-step instructions for genome curation on a new sequencing project are as
 
 4. Take the output file "seq_check_manual.csv" and manually check the Ns and ambiguities in [Geneious](geneious.com). Once completed, generate an edited tsv file with the manually edited consensus genome in one column. Do this individually for all the newly sequenced folders in your dataset and store the manually edited file in the same folder as "SEQNAME_all_manual.tsv".
 
-5.Then, pull the manually edited tsvs from all folders into the parent folder, using this script:
+5. Then, pull the manually edited tsvs from all folders into the parent folder, using this script:
 
 ```
 mkdir manual-tsv
