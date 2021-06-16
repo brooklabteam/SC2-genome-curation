@@ -28,11 +28,11 @@ Once this is done, double check that you got all the genomes from the project! Y
 * meta_df.csv
 * make-manual-cns.R
 
-*The "meta_df.csv" folder should include the appropriately structured metadata with both CZB-ID and IPM-ID for each sample processed.*
+*The "meta_df.csv" folder should include the appropriately structured metadata. The following columns are REQUIRED for the script to run: ID_IDSeq, ID_Viro, sample_collection_date, and Ct_Orf1. A blank meta_df.csv is included here for reference.*
 
 ---
 
-3. Run the processing script with the line:
+3. In terminal, cd into the parent folder, and run the processing script with the line:
 
 ```
     sh -e loop-COVID-seq.txt 
@@ -73,5 +73,7 @@ Rscript make-manual-cns.R
 ---
 
 8. Concatenate all the manually-edited genomes and upload to check genome integrity on [Nextclade](https://clades.nextstrain.org/). Decide what to submit to GISAID.
+
+9. Work with Cara to update all metadata for genomes going to GISAID in the running metadata file.
 
 
