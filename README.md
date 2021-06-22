@@ -52,11 +52,13 @@ The above script produces the following outputs:
 - Within the genome output subfolder, copy the newly formed .tsv file ("SEQNAME_all.tsv") into a new file with the name "SEQNAME_all_manual.tsv"."
 - Open "SEQNAME_all_manual.tsv", then add a column to the right of "cns" that duplicates "cns" but has the header "cns_manual". 
 - Then scroll down the "flagN" and "flagAmbiguous" columns for any values of 1 and examine these genome positions in Genious. If the nucleotide is marked as "N" or "Ambiguous"", you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. Here are some rules for making a call:
-    a. If the basepair is flagged as "N", and has fewer than 10 reads at that site, **you can manually edit it if there are 3 or more reads at that site which ALL agree with the reference genome**. If there are fewer than 3 reads, or if is any disagreement in the reads, or if you would be changing it to a mutation, it should be left as "N".
-    b. If the basepair is flagged as "N", and has MORE than 10 reads per site, you can manually edit it to the reference genome if 95% or more of the reads at that site match to the reference. 
-    c. If the basepair is flagged as "N" and there are fewer than 3 reads at that site, or if you would be changing it to a mutation, it should be left as "N".
-    d.  If the  basepair is flagged as an Ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous.
-    e. In the event of an insertion, add a row in the .tsv file and type "insertion" in the "position" column such that the basepairs mapping to the reference genome still maintain the reference genome's official position number.
+
+        (a) If the basepair is flagged as "N", and has fewer than 10 reads at that site, **you can manually edit it if there are 3 or more reads at that site which ALL agree with the reference genome**. If there are fewer than 3 reads, or if is any disagreement in the reads, or if you would be changing it to a mutation, it should be left as "N".
+        (b) If the basepair is flagged as "N", and has MORE than 10 reads per site, you can manually edit it to the reference genome if 95% or more of the reads at that site match to the reference. 
+        (c) If the basepair is flagged as "N" and there are fewer than 3 reads at that site, or if you would be changing it to a mutation, it should be left as "N".
+        (d)  If the  basepair is flagged as an Ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous.
+        (e) In the event of an insertion, add a row in the .tsv file and type "insertion" in the "position" column such that the basepairs mapping to the reference genome still maintain the reference genome's official position number.
+    
 - Continue this process until you have examined ALL the Ns and Ambiguities in the genome, then save the "SEQNAME_all_manual.tsv" file.
 
 ---
