@@ -74,9 +74,17 @@ cd manual-tsv
 cp /path_to_folder/*_outputs/*_manual.tsv .
 ```
 
+Note that "path_to_folder" should be repleaced with the path to your directory on your home computer! For example, on my computer, I would type the following for line 3 of the above code:
+
+```
+cp /Users/caraebrook/Documents/R/R_repositories/COVID-Madagascar/ARTIC-pipelines/ARTIC5/*_outputs/*_manual.tsv .
+```
+
+A tip for command line coding: The above is telling the computer to "copy" ALL of the files ending in _manual.tsv (that's the asterisk) from ALL of the sub-folders ending in _output to the folder where your cursor is currently located (manual-tsv). You COULD drag these in manually, but it is best to practice the command line code.
+
 ---
 
-6. Then concatenate all tsv files with:
+6. Then, still located in the manual-tsv subfolder, concatenate all tsv files with:
 
 ```
 cat *tsv > all_manual.tsv
@@ -86,7 +94,7 @@ mkdir consensus-manual
 
 ---
 
-7. Then  run R script to generate new manual consensus files and store in above folder, along with a  final mutation and ambiguities summary file.
+7. Now, use the command "cd" to "back-up" one folder so that you are back in the parent directory. Then, run R script to generate new manual consensus files and store in the sub-sub "consensus-manual" folder, along with a  final mutation and ambiguities summary file.
 
 ```
 Rscript make-manual-cns.R
@@ -94,8 +102,17 @@ Rscript make-manual-cns.R
 
 ---
 
-8. Concatenate all the manually-edited genomes and upload to check genome integrity on [Nextclade](https://clades.nextstrain.org/). Decide what to submit to GISAID.
+8. Now, cd into the manual-consensus sub-sub-folder and concatenate all the manually-edited genomes. Remember that "cat" is the command to concatenate and the asterisk says to do this to ALL the files ending in ".fasta":
 
-9. Work with Cara to update all metadata for genomes going to GISAID in the running metadata file.
+```
+cd manual-tsv
+cd consensus-manual
+cat *fasta > all_manual_cns_seq.fasta
+
+```
+
+9. Go ahead and open up "all_manual_cns_seq.fasta" to see all the genomes together in one file. Then, upload this file (you can drag it) to check genome integrity on [Nextclade](https://clades.nextstrain.org/). Decide what to submit to GISAID.
+
+10. Work with Cara to update all metadata for genomes going to GISAID in the running metadata file.
 
 
