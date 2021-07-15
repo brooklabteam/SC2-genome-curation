@@ -102,7 +102,11 @@ Rscript make-manual-cns.R
 
 ---
 
-8. Now, cd into the manual-consensus sub-sub-folder and concatenate all the manually-edited genomes. Remember that "cat" is the command to concatenate and the asterisk says to do this to ALL the files ending in ".fasta":
+8. Now, cd into the manual-consensus sub-sub-folder and examine your manually-edited genomes. For each genome, in Geneious, build a quick MAFFT alignment of (a) the reference sequence, (b) the IDseq original consensus genome, and (c) your own edited consensus sequence after each curation. Geneious will highlight discrepancies among them.
+
+If there are any places where your genome differs from both the reference seq and the IDseq consensus, these will be changes you made manually, so they should be restricted to just resolving ambiguities. There should never be a place where you resolve an "N" to be a mutation -- it is better to just leave as N. If you find any errors, note that it is possible to further edit your own genome directyly in Geneious.
+
+9. Once you are confident in your manual edits, you can concatenate all the manually-edited genomes. To do this, cd into the manual-consensus sub-sub-folder and use the "cat" command to concatenate. Remember that the asterisk says to do this to ALL the files ending in ".fasta":
 
 ```
 cd manual-tsv
@@ -111,8 +115,8 @@ cat *fasta > all_manual_cns_seq.fasta
 
 ```
 
-9. Go ahead and open up "all_manual_cns_seq.fasta" to see all the genomes together in one file. Then, upload this file (you can drag it) to check genome integrity on [Nextclade](https://clades.nextstrain.org/). Decide what to submit to GISAID.
+10. Go ahead and open up "all_manual_cns_seq.fasta" to see all the genomes together in one file. Then, upload this file (you can drag it) to check genome integrity on [Nextclade](https://clades.nextstrain.org/). Decide what to submit to GISAID.
 
-10. Work with Cara to update all metadata for genomes going to GISAID in the running metadata file.
+11. Work with Cara to update all metadata for genomes going to GISAID in the running metadata file.
 
 
