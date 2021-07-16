@@ -127,13 +127,10 @@ To add a prefix to every sequence in a compiled file:
 
 ```
 awk '{if (/^>/) print ">prefix_to_add_"(++i)"_" substr($0,2); else print $0;}'  filename.fasta > new_filename_with_prefix.fasta
-
 ```
 
 To split a compiled fasta back into the individual genome files (for uploading to Geneious, for example):
 
 ```
-
 awk 'BEGIN {n_seq=0;} /^>/ {if(n_seq%1==0){file=sprintf("filename_for_individual_files%d.fa",n_seq);} print >> file; n_seq++; next;} { print >> file; }' < filename_for_compiled_file.fasta
-
 ```
