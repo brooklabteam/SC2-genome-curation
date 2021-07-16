@@ -121,7 +121,7 @@ cat *fasta > all_manual_cns_seq.fasta
 
 ---
 
-Useful command line code to manipulate genomes:
+##Useful command line code to manipulate genomes
 
 To add a prefix to every sequence in a compiled file:
 
