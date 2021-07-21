@@ -80,7 +80,9 @@ Note that "path_to_folder" should be repleaced with the path to your directory o
 cp /Users/caraebrook/Documents/R/R_repositories/COVID-Madagascar/ARTIC-pipelines/ARTIC5/*_outputs/*_manual.tsv .
 ```
 
-A tip for command line coding: The above is telling the computer to "copy" ALL of the files ending in _manual.tsv (that's the asterisk) from ALL of the sub-folders ending in _output to the folder where your cursor is currently located (manual-tsv). You COULD drag these in manually, but it is best to practice the command line code.
+*A tip for command line coding*: The above is telling the computer to "copy" ALL of the files ending in _manual.tsv (that's the asterisk) from ALL of the sub-folders ending in _output to the folder where your cursor is currently located (manual-tsv). The space followed by the period (" .") means copy it here, to the folder I am currently located in. You could specify the path to this location--the current script is just a shortcut.
+
+Of course, you COULD drag all the files into the folder manually, but it is best to practice the command line code.
 
 ---
 
@@ -122,6 +124,24 @@ cat *fasta > all_manual_cns_seq.fasta
 ---
 
 ## Useful command line code to manipulate genomes
+
+To move into the next folder:
+
+```
+cd
+```
+
+To back up into the previous folder:
+
+```
+cd -
+```
+
+To back up to the original base folder:
+
+```
+cd ~
+```
 
 To add a prefix to every sequence in a compiled file:
 
