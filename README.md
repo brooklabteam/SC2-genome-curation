@@ -6,15 +6,15 @@ Step-by-step instructions for genome curation on a new sequencing project are as
 
 ---
 
- 1. Create a parent folder for the new IDSeq project. Download all "metadata" folders for each genome in that project, unzip, and store as subfolders in the parent folder. Each genome's metadata folder must currently be downloaded individually, though the IDseq team is working to amend this. This means you will have to individually click on each genome, selecting the "Download All" option in the upper right, unzip the folder and move it manually into your parent folder.
+ 1. Create a parent folder for the new IDSeq project. Download all "metadata" folders for each genome in that project that you wish to curate. These can be downloaded in bulk by checking all sequence folders in the project that you wish to download, then selecting the cloud 'Download' button in the upper righthand corner of the screen. 
  
-![](images/genome_download.png)
+![](images/download1.png)
 
-Once this is done, double check that you got all the genomes from the project! **You can skip downloads for any genomes that have poor coverage (e.g. <85%).** They will look like this--no need to download!
+*Note that you should only select genomes for download with relatively good (>85%) coverage! It is not worth it to try curating anything of poorer quality.* They will look something like this:
 
 ![](images/poor_coverage_genome.png)
-
-**If you skip a genome, please update the "genomes-for-resequencing.csv" file in this database with the run name and ID_Viro for the sample in question.**
+ 
+After selecting higher quality genome folders for download and clicking the 'Download' cloud button, now select the "Intermediate Output Files" option and unzip the corresponding folders after they have downloaded. Move them into your parent folder on your home computer. Once this is done, double check that you have a folder for all genomes you hope to curate in your parent folder. 
 
 ---
 
