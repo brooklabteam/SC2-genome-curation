@@ -16,11 +16,11 @@ compiled_tsv = subset(compiled_tsv, seq_name !="seq_name")
 #attach metadata
 meta.df <- read.csv(file="meta_df.csv", header = T, stringsAsFactors = F)
 #remove any for which there is no sequencing info
-meta.df <- meta.df[!is.na(meta.df$ID_IDSeq),]
+meta.df <- meta.df[!is.na(meta.df$ID_CZID),]
 
 #merge Ct and IP names
 head(meta.df)
-merge.dat <- dplyr::select(meta.df, ID_IDSeq, ID_Viro, sample_collection_date, Ct)
+merge.dat <- dplyr::select(meta.df, ID_CZID, ID_Viro, sample_collection_date, Ct)
 names(merge.dat)[1] <- "seq_name"
 new.df <- merge(x=compiled_tsv, y = merge.dat, all.x=TRUE, by= "seq_name")
 
