@@ -1,20 +1,23 @@
 # SC2-genome-curation
 
-This site hosts the scripts needed to curate SARS-CoV-2 consensus genomes produced in part with our Next Generation Sequencing collaboration with [Institut Pasteur of Madagascar](http://www.pasteur.mg/) collaboration. Consensus genomes are produced from a Nexflow pipeline on [CZID.org](czid.org) after upload of raw .fastq files from IPM. The scripts stored here can be run on the resulting IDseq output, manually curated, then uploaded to GISAID.org.
+This site hosts the scripts needed to curate SARS-CoV-2 consensus genomes produced in part with our Next Generation Sequencing collaboration with [Institut Pasteur of Madagascar](http://www.pasteur.mg/) collaboration. Consensus genomes are produced from a Nexflow pipeline on [CZID.org](czid.org) after upload of raw .fastq files from IPM. The scripts stored here can be run on the resulting CZID consensus genome output, manually curated, then uploaded to GISAID.org.
 
 Step-by-step instructions for genome curation on a new sequencing project are as follows:
 
 ---
 
- 1. Create a parent folder for the new IDSeq project. Download all "metadata" folders for each genome in that project that you wish to curate. These can be downloaded in bulk by checking all sequence folders in the project that you wish to download, then selecting the cloud 'Download' button in the upper righthand corner of the screen. 
+ 1. Create a parent folder for the new CZID project. Download all "metadata" folders for each genome in that project that you wish to curate. These can be downloaded in bulk by checking all sequence folders in the project that you wish to download, then selecting the cloud 'Download' button in the upper righthand corner of the screen. 
  
 ![](images/download1.png)
 
-*Note that you should only select genomes for download with relatively good (>85%) coverage! It is not worth it to try curating anything of poorer quality.* They will look something like this:
+*Note that you should only select genomes for download with relatively good (>85%) coverage! It is not worth it to try curating anything of poorer quality.* Poor genomes will look something like this:
 
 ![](images/poor_coverage_genome.png)
  
+ 
 After selecting higher quality genome folders for download and clicking the 'Download' cloud button, now select the "Intermediate Output Files" option and unzip the corresponding folders after they have downloaded. Move them into your parent folder on your home computer. Once this is done, double check that you have a folder for all genomes you hope to curate in your parent folder. 
+
+![](images/download2.png)
 
 ---
 
@@ -71,13 +74,13 @@ The above script produces the following outputs:
 ```
 mkdir manual-tsv
 cd manual-tsv
-cp /path_to_folder/*_outputs/*_manual.tsv .
+cp /path_to_folder/*_MN908947.3/*_manual.tsv .
 ```
 
-Note that "path_to_folder" should be repleaced with the path to your directory on your home computer! For example, on my computer, I would type the following for line 3 of the above code:
+Note that "path_to_folder" should be replaced with the path to your parent directory on your home computer! For example, on my computer, I would type the following for line 3 of the above code:
 
 ```
-cp /Users/caraebrook/Documents/R/R_repositories/COVID-Madagascar/ARTIC-pipelines/ARTIC5/*_outputs/*_manual.tsv .
+cp /Users/carabrook/Developer/COVID-Madagascar/ARTIC5/*_MN908947.3/*_manual.tsv .
 ```
 
 *A tip for command line coding*: The above is telling the computer to "copy" ALL of the files ending in _manual.tsv (that's the asterisk) from ALL of the sub-folders ending in _output to the folder where your cursor is currently located (manual-tsv). The space followed by the period (" .") means copy it here, to the folder I am currently located in. You could specify the path to this location--the current script is just a shortcut.
