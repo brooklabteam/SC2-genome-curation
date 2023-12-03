@@ -17,7 +17,7 @@ done
 
 #then, once these finish, you can pull all of the newly generated tsv files into the parent file and concatenate them into one with this line:
 
-cat *_outputs/*_all.tsv > all_seq.tsv
+cat *_MN908947.3/*_all.tsv > all_seq.tsv
 
 #note that this will concatenate the header multiple times, so you will need to remove it in the next step where you link to metadata (with Ct) and generate rpm plot with another R script.
 #also, note that you NEED the metadata file in here to run this

@@ -15,11 +15,10 @@ library(rjson)
 #load the reads
 tsv <- read.delim(file = "samtools_depth.txt", header = F)
 tsv$position = 1:nrow(tsv)
-seqname = sapply(strsplit(basename(getwd()), split="_outputs"), '[', 1)
+#seqname = sapply(strsplit(basename(getwd()), split="_outputs"), '[', 1)
 
-tsv$seq_name = seqname
+#tsv$seq_name = seqname
 #head(tsv)
-names(tsv) <- c("reads","position",  "seq_name")
 
 
 #start.pos <- min(tsv$position[tsv$reads>0])
@@ -36,6 +35,8 @@ fasta <- seqinr::read.fasta(file = "consensus.fa", as.string = T, forceDNAtolowe
 
 tsv$seq_name <- names(fasta)
 seqname = names(fasta)
+names(tsv) <- c("reads","position",  "seq_name")
+
 
 #save the two as a concatenated file
 all_fasta <- list()
