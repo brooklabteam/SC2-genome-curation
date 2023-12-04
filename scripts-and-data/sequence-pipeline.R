@@ -12,9 +12,14 @@ library(rjson)
 #running on command line, so it automatically sets the wd to the current folder
 #print(getwd())
 
+
 #load the reads
 tsv <- read.delim(file = "samtools_depth.txt", header = F)
 tsv$position = 1:nrow(tsv)
+
+#read json file to get name
+json <- fromJSON(file="stats.json")
+seqname = json$sample_name
 #seqname = sapply(strsplit(basename(getwd()), split="_outputs"), '[', 1)
 
 #tsv$seq_name = seqname
@@ -31,12 +36,23 @@ refseq <-  seqinr::read.fasta(file = "MN908947.3.fa", as.string = T, forceDNAtol
 
 #now load the 
 #and add the consensus
-fasta <- seqinr::read.fasta(file = "consensus.fa", as.string = T, forceDNAtolower = F)
+if(file.exists("consensus.fa")){
+  fasta <- seqinr::read.fasta(file = "consensus.fa", as.string = T, forceDNAtolower = F)
+  
+}else if (file.exists(paste0(seqname,".consensus.fasta"))){
+  fasta <- seqinr::read.fasta(file = paste0(seqname,".consensus.fasta"), as.string = T, forceDNAtolower = F)
+}
 
-tsv$seq_name <- names(fasta)
-seqname = names(fasta)
+# seqname2 = names(fasta)
+# seqname2 <- gsub(pattern = "/", replacement = "_", seqname2)
+# seqname2 <- gsub(pattern = " ", replacement = "_", seqname2)
+
+
+
+# if the fasta file 
+tsv$seq_name <- seqname
 names(tsv) <- c("reads","position",  "seq_name")
-
+names(fasta) <- seqname
 
 #save the two as a concatenated file
 all_fasta <- list()
@@ -53,7 +69,7 @@ aln <- msa(all_fasta, method="Muscle")
 
 tsv$refseq <- as.character(as.vector(aln@unmasked[["MN908947.3"]][1:nrow(tsv)]))
 
-tsv$cns <- as.character(as.vector(aln@unmasked[[seqname]][1:nrow(tsv)]))
+tsv$cns <- as.character(as.vector(aln@unmasked[[names(fasta)]][1:nrow(tsv)]))
 
 
 #now add a column flagging the mutations
@@ -74,8 +90,8 @@ tsv$ID_SNP[tsv$flagSNP==1] <- paste(tsv$refseq[tsv$flagSNP==1], tsv$cns[tsv$flag
 
 
 #load json file for raw reads and rpm
-
-json <- fromJSON(file = "stats.json")
+# 
+# json <- fromJSON(file = "stats.json")
 
 tsv$total_reads <- json$total_reads
 tsv$rpm <- tsv$reads/(tsv$total_reads/1000000)
