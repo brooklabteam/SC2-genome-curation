@@ -1,0 +1,31 @@
+REM create new subfolder called manual-tsv
+
+mkdir manual-tsv
+
+REM copy the *_manual.tsv file from each sequence folder into the new manual-tsv subfolder
+
+@echo off
+for /d %%D in ("%cd%\*") do (
+    for %%F in ("%%D\*_manual.tsv") do (
+        copy "%%F" "path_to_folder\manual-tsv\"
+    )
+)
+
+REM navigate into the manual-tsv subfolder
+
+cd manual-tsv
+
+REM concatenate all the *_manual.tsv files into one master all_manual.tsv file
+
+@echo off
+type NUL > all_manual.tsv
+
+for %%F in ("%CD%\*_manual.tsv") do (
+    echo Processing file: %%F
+    type "%%F" >> all_manual.tsv
+)
+
+REM create a sub-subfolder called consensus-manual
+
+mkdir consensus-manual
+

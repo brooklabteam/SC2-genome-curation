@@ -1,0 +1,7 @@
+REM concatenate all the new .fasta files
+
+cd manual-tsv
+cd consensus-manual
+
+@echo off
+type *.fasta > all_manual_cns_seq.fasta
