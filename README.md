@@ -143,6 +143,7 @@ cd consensus-manual
 type *.fasta > all_manual_cns_seq.fasta
 
 ```
+This can alternately be done on a Windows machine by saving the concatenate-fasta file as a Windows batch file (.bat) and running in terminal.
 
 10. Go ahead and open up "all_manual_cns_seq.fasta" to see all the genomes together in one file. Then, upload this file (you can drag it) to check genome integrity on [Nextclade](https://clades.nextstrain.org/). Decide what to submit to GISAID.
 
