@@ -23,6 +23,10 @@ revSub <- revSub[!duplicated(revSub)]
 #and the labeled mutations
 labelSub <- strsplit(mutations$privateNucMutations.labeledSubstitutions, "|", fixed=T)
 
+
+privSub <- c(unlist(strsplit(c(mutations$privateNucMutations.unlabeledSubstitutions),",")))
+privSub[!duplicated(privSub)]
+
 get.seqs <- function(df){
   if(length(df)>0){
   #first, combine first and last
@@ -61,10 +65,22 @@ for (i in 1:length(intersect.list)){
   tsv$cns_manual[tsv$mutation_name==intersect.list[i] & !is.na(tsv$mutation_name)]  <- "N"
 }
 
+
+#now add a flag for the private mutations
+tsv$flag_privateSNP <- 0
+
+new.intersect <- intersect(tsv$mutation_name, privSub)
+
+for (i in 1:length(intersect.list)){
+  tsv$flag_privateSNP[tsv$mutation_name==new.intersect[i] & !is.na(tsv$mutation_name)]  <- 1
+}
+
 #now, reorder and write a new file.
 
 #reorder into something more logical
-tsv <- dplyr::select(tsv, seq_name, total_reads, coverage, n_missing, position, reads, rpm, refseq, cns, cns_manual, flagN, flagAmbiguous, flagSNP, ID_SNP)
+tsv <- dplyr::select(tsv, seq_name, total_reads, coverage, n_missing, position, reads, rpm, refseq, cns, cns_manual, flagN, flagAmbiguous, flagSNP, ID_SNP, flag_privateSNP)
+
+
 
 
 write_tsv(tsv, paste0(seqname,"_all_manual.tsv"))
