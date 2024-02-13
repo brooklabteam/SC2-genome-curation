@@ -10,7 +10,7 @@ Step-by-step instructions for genome curation on a new sequencing project are li
 
 <img src="images/downloadA.png"
      alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
+     style="float: left; margin-right: 5px;" />
 
 ---
 
