@@ -106,10 +106,10 @@ The above script produces the following outputs:
   - If you wish, you can also add the corresponding .bed file from the parent folder, but I often find it is easier to just scroll through the .tsv file.
   - Open "SEQNAME_all_manual.tsv". Freeze the panes on the top row of your database so you can see the headers as you scroll down.
   - First, check for any insertions. To do this, search the "refseq" column for any dashes. **All insertions should be visible as a dash in the refseq column.** If you find any, you will notice that the "position" column continues its sequence from top to bottom. This is incorrect because that position should reflect the nucleotide identity of the reference genome, and there is no reference nucleotide at that place. To amend this, you should insert a row for each dash, type the word "insert" in the position column, and copy the consensus genome information into that row. Then, you should realign the "position" column so the numbering resumes after the insertion.
-    - Here is an example of a sequence that needs an insertion to be called (between position 26493 and 26494):
+  - Here is an example of a sequence that needs an insertion to be called (between position 26493 and 26494):
 
 <img src="images/needs_insertion.png" alt="insertemut" style="float: left; margin-right" width = "500" />
-    - And here is how you would edit it:
+  - And here is how you would edit it:
      <img src="images/amended_insertion.png" alt="insertion" style="float: left; margin-right" width = "500" />
      
   - After resolving any insertions (they are not super common), scroll down the "flagN", "flagAmbiguous", and "flag_privateSNP" columns for any values of 1 and examine these genome positions in Geneious. If the nucleotide is marked as "N" or "Ambiguous" or there is a questionable SNP at that site, you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. Here are some rules for making a call:
@@ -121,6 +121,7 @@ The above script produces the following outputs:
     - If the basepair is flagged as "N" and there are fewer than 3 reads at that site, or if you would be changing it to a mutation, or if it has <10 reads with any disagreement at all, it should be left as "N".
     - If the basepair is flagged as an Ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous. In general, you will find that >75% of the nucleotides match the resolved result, but it is okay to resolve at lower proportions if you feel confident about the outcome.
     - If the basepair is flagged as a private mutation, it is likely going to be correct as is. The only mutations flagged here are not reversions and also not listed in the named mutation database (all of these were reverted to N in step 9). You will likely just be confirming that this looks correct, so I don't anticipate you making many changes here. When you examine these, if the mutation is not well supported, remember that it is always safest to revert to "N." Also, please don't be shy to ask to help!
+    
   - Continue this process until you have examined ALL the Ns, Ambiguities, and private mutations in the genome, then save the "SEQNAME_all_manual.tsv" file.
 
 
