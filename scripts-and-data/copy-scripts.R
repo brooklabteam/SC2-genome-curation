@@ -9,9 +9,9 @@ library(readr)
 all_names <- list.files()
 
 #copy these files over 
-files_to_copy <- c("MN908947.3.fa","sequence-pipeline.R")
+files_to_copy <- c("MN908947.3.fa","sequence-pipeline.R", "curate-mutations.R", "nextclade.tsv")
 
-files_to_stay <-c("copy-scripts.R")
+files_to_stay <-c("copy-scripts.R", "make-manual-cns.R", "merge-meta-plot.R", "loop-COVID-seq.txt", "meta_df.csv")
 
 folder_names <- setdiff(setdiff(all_names, files_to_copy), files_to_stay)
 
@@ -24,5 +24,7 @@ folder_names <- setdiff(setdiff(all_names, files_to_copy), files_to_stay)
 for (i in 1:length(folder_names)){
   file.copy(from=paste(getwd(), files_to_copy[1], sep="/"), to=paste(getwd(), folder_names[i], sep="/"))
   file.copy(from=paste(getwd(), files_to_copy[2], sep="/"), to=paste(getwd(), folder_names[i], sep="/"))
+ file.copy(from=paste(getwd(), files_to_copy[3], sep="/"), to=paste(getwd(), folder_names[i], sep="/"))
+ file.copy(from=paste(getwd(), files_to_copy[4], sep="/"), to=paste(getwd(), folder_names[i], sep="/"))
 }
 #and save the files to each of the locations
