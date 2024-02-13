@@ -100,27 +100,30 @@ The above script produces the following outputs:
 10. If you are short on time, proceed to step #12 below. You should be able to pull your edited files after replacing the private mutations with Ns into a central folder to make new consensus genomes for upload to GISAID. They may still not be very high quality, but it is worth a shot.
 
 11. If you have enough time, then it is always a good idea to manually edit your genome files. There are three types of corrections you can make, using [Geneious](geneious.com): (1) you can confirm or revert private mutations to N, (2) you can resolve Ns to a nucleotide call, or (3) you can resolve an Ambiguity. Forl manual curation, follow the bulleted steps here:
-  a.  Make a sub-folder for each genome in Geneious.
-  b. Add the reference sequence (MN908947.3.fa) to each subfolder, then add the "aligned_reads.bam" file (or "SEQNAME.primertrimmed.rg.sorted.bam" for later iterations of the pipeline) for each genome to the corresponding subfolder. The reads should map to the reference.
-  c. If you wish, you can also add the corresponding .bed file from the parent folder, but I often find it is easier to just scroll through the .tsv file.
-  d. Open "SEQNAME_all_manual.tsv". Freeze the panes on the top row of your database so you can see the headers as you scroll down.
-  e. First, check for any insertions. To do this, search the "refseq" column for any dashes. **All insertions should be visible as a dash in the refseq column.** If you find any, you will notice that the "position" column continues its sequence from top to bottom. This is incorrect because that position should reflect the nucleotide identity of the reference genome, and there is no reference nucleotide at that place. To amend this, you should insert a row for each dash, type the word "insert" in the position column, and copy the consensus genome information into that row. Then, you should realign the "position" column so the numbering resumes after the insertion.
-    - Here is an example of a sequence that needs an insertion to be called (between position 26493 and 26494): ![](images/needs_insertion.png)
+  A.   Make a sub-folder for each genome in Geneious.
+  B.  Add the reference sequence (MN908947.3.fa) to each subfolder, then add the "aligned_reads.bam" file (or "SEQNAME.primertrimmed.rg.sorted.bam" for later iterations of the pipeline) for each genome to the corresponding subfolder. The reads should map to the reference.
+  C.  If you wish, you can also add the corresponding .bed file from the parent folder, but I often find it is easier to just scroll through the .tsv file.
+  D.  Open "SEQNAME_all_manual.tsv". Freeze the panes on the top row of your database so you can see the headers as you scroll down.
+  E.  First, check for any insertions. To do this, search the "refseq" column for any dashes. **All insertions should be visible as a dash in the refseq column.** If you find any, you will notice that the "position" column continues its sequence from top to bottom. This is incorrect because that position should reflect the nucleotide identity of the reference genome, and there is no reference nucleotide at that place. To amend this, you should insert a row for each dash, type the word "insert" in the position column, and copy the consensus genome information into that row. Then, you should realign the "position" column so the numbering resumes after the insertion.
+    - Here is an example of a sequence that needs an insertion to be called (between position 26493 and 26494): 
+       <img src="images/needs_insertion.png" alt="insertemut"" style="float: left; margin-right" width = "300" />
+    
+    
     - And here is how you would edit it:
      <img src="images/amended_insertion.png" alt="privatemut"" style="float: left; margin-right" width = "300" />
     
-f. After resolving any insertions (they are not super common), scroll down the "flagN", "flagAmbiguous", and "flag_privateSNP" columns for any values of 1 and examine these genome positions in Geneious. 
+F.  After resolving any insertions (they are not super common), scroll down the "flagN", "flagAmbiguous", and "flag_privateSNP" columns for any values of 1 and examine these genome positions in Geneious. 
     - If the nucleotide is marked as "N" or "Ambiguous"", you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. Here are some rules for making a call:
       - If the basepair is flagged as "N", and has fewer than 10 reads at that site, you can manually edit it if there are 3 or more reads at that site which ALL agree with the reference genome. 
       - If the basepair is flagged as "N", and has MORE than 10 reads per site, you can manually edit it to the reference genome if 95% or more of the reads at that site match to the reference. Note that you can visualize the percent of each nucleotide per genome position in the "Statistics" tab of Geneious, but you have to be sure to highlight the column at the top of the consensus genome so that you first see an arrow from the cursor before the highlight. It will give you a read-out like this: 
           <img src="images/geneious-highlight-right.png" alt="privatemut"" style="float: left; margin-right" width = "300" />
       
       - Note that if you see claims of 100% of a given nucleotide upon highlight, you likely did not highlight the column correctly. Here is the same column highlighted incorrectly because I did not wait for the arrow to materialize above the consensus genome:  
-          <img src="images/geneious-highlight-wrong.png" alt="privatemut"" style="float: left; margin-right" width = "300" />![](images/geneious-highlight-wrong.png)
+          <img src="images/geneious-highlight-wrong.png" alt="privatemut"" style="float: left; margin-right" width = "300" />
       - If the basepair is flagged as "N" and there are fewer than 3 reads at that site, or if you would be changing it to a mutation, or if it has <10 reads with any disagreement at all, it should be left as "N".
       - If the basepair is flagged as an Ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous. In general, you will find that >75% of the nucleotides match the resolved result, but it is okay to resolve at lower proportions if you feel confident about the outcome.
       - If the basepair is flagged as a private mutation, it is likely going to be correct. The only mutations flagged here are not reversions and also not listed in the named mutation database (all of these were reverted to N in step 9). You will likely just be confirming that it looks correct. If it does not, or if something strange is happening, it is always safest to revert to "N." Also, please don't be shy to ask dor help.
-- Continue this process until you have examined ALL the Ns, Ambiguities, and privagte mutations in the genome, then save the "SEQNAME_all_manual.tsv" file.
+- Continue this process until you have examined ALL the Ns, Ambiguities, and private mutations in the genome, then save the "SEQNAME_all_manual.tsv" file.
 
 ---
 
