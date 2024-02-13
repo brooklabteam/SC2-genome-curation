@@ -20,6 +20,7 @@ Step-by-step instructions for genome curation on a new sequencing project are li
 ---
 
 3. Let Nextclade run (it will take a few minutes) until it has processed all of your genomes to produce a screen that looks something like this:
+
 <img src="images/nextclade2.png" alt="downloadA" style="float: left; margin-right" width = "1000" />
 
 
@@ -31,29 +32,29 @@ Step-by-step instructions for genome curation on a new sequencing project are li
 
 5. For any remaining sequences that are flagged with orange or red circles under the "private mutations" circle, we are going to convert any "reversion mutations" or any "labeled mutations" to "N" and then rerun in Nextclade. You can read about these mutation classifications on the Nextclade website [here](https://docs.nextstrain.org/projects/nextclade/en/stable/user/algorithm/07-quality-control.html) under the 'Private mutations' section of the Quality Control page. Here's a good example of a reversion mutation clearly due to a faulty computational pipeline that failed to trim an adaptor sequence:
 
-<img src="images/privatemutationreversion.png" alt="privatemut"" style="float: left; margin-right" width = "500" />
-
+<img src="images/privatemutationreversion.png" alt="reversion" style="float: left; margin-right" width = "500" />
 
 
 In the case of above, the entire subclade of the Oct1 folder has this reversion -- the homoplasy is clearly visible when you click on the "Tree" tab in Nextclade and zoom in on this cluster:
 
-<img src="images/clusterzoom.png" alt="privatemut"" style="float: left; margin-right" width = "400" />
+<img src="images/clusterzoom.png" alt="zoom" style="float: left; margin-right" width = "400" />
 
 
 Before leaving Nextclade, download the output '.tsv' file corresponding to the reversion substitutions, labeled substitutions, and unlabeled substitutions that have been identified in your dataset as private mutations. You can navigate to this in the "Export" button of Nextclade and select the appropriate categories listed here:
-<img src="images/nextcladeexport.png" alt="privatemut"" style="float: left; margin-right" width = "500" />
+
+<img src="images/nextcladeexport.png" alt="export" style="float: left; margin-right" width = "500" />
 
 
 ---
 
 6. Now, it is time to download the composite metadata files for all sequences in your dataset that you plan to curate. To do this, create a parent folder for the new CZID project on your home computer. Download all "metadata" folders for each genome in that project that you wish to curate. These can be downloaded in bulk by checking all sequence folders in the project that you wish to download, then selecting the cloud 'Download' button in the upper righthand corner of the screen. 
  
- <img src="images/download1.png" alt="privatemut"" style="float: left; margin-right" width = "400" />
+<img src="images/download1.png" alt="download" style="float: left; margin-right" width = "400" />
 
 
 After clicking the 'Download' cloud button, now select the "Intermediate Output Files" option and unzip the corresponding folders after they have downloaded. Move them into your parent folder on your home computer. Once this is done, double check that you have a folder for all genomes you hope to curate in your parent folder. 
 
- <img src="images/download2.png" alt="privatemut"" style="float: left; margin-right" width = "400" />
+ <img src="images/download2.png" alt="download2" style="float: left; margin-right" width = "400" />
 
 ---
 
@@ -112,17 +113,17 @@ The above script produces the following outputs:
     
   - And here is how you would edit it:
   
-     <img src="images/amended_insertion.png" alt="privatemut"" style="float: left; margin-right" width = "300" />
+     <img src="images/amended_insertion.png" alt="insertion" style="float: left; margin-right" width = "300" />
     
   - After resolving any insertions (they are not super common), scroll down the "flagN", "flagAmbiguous", and "flag_privateSNP" columns for any values of 1 and examine these genome positions in Geneious. 
     - If the nucleotide is marked as "N" or "Ambiguous"", you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. Here are some rules for making a call:
     - If the basepair is flagged as "N", and has fewer than 10 reads at that site, you can manually edit it if there are 3 or more reads at that site which ALL agree with the reference genome. 
     - If the basepair is flagged as "N", and has MORE than 10 reads per site, you can manually edit it to the reference genome if 95% or more of the reads at that site match to the reference. Note that you can visualize the percent of each nucleotide per genome position in the "Statistics" tab of Geneious, but you have to be sure to highlight the column at the top of the consensus genome so that you first see an arrow from the cursor before the highlight. It will give you a read-out like this: 
-          <img src="images/geneious-highlight-right.png" alt="privatemut"" style="float: left; margin-right" width = "300" />
+          <img src="images/geneious-highlight-right.png" alt="geneious" style="float: left; margin-right" width = "300" />
       
     - Note that if you see claims of 100% of a given nucleotide upon highlight, you likely did not highlight the column correctly. Here is the same column highlighted incorrectly because I did not wait for the arrow to materialize above the consensus genome:  
     
-          <img src="images/geneious-highlight-wrong.png" alt="privatemut"" style="float: left; margin-right" width = "300" />
+          <img src="images/geneious-highlight-wrong.png" alt="geneious2" style="float: left; margin-right" width = "300" />
     
     - If the basepair is flagged as "N" and there are fewer than 3 reads at that site, or if you would be changing it to a mutation, or if it has <10 reads with any disagreement at all, it should be left as "N".
     - If the basepair is flagged as an Ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous. In general, you will find that >75% of the nucleotides match the resolved result, but it is okay to resolve at lower proportions if you feel confident about the outcome.
