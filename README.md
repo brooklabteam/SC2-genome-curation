@@ -14,7 +14,8 @@ Step-by-step instructions for genome curation on a new sequencing project are li
 
 2. After your concatenated consensus genome file downloads in step 1, navigate to [Nextclade](https://clades.nextstrain.org/export) on your web browser and drag your concatenated consensus genome file onto the "Provide sequence data" window.
 
-![](images/nextclade1.png)
+<img src="images/nextclade1.png" alt="downloadA" style="float: left; margin-right" width = "400" />
+
 
 ---
 
