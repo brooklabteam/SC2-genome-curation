@@ -8,7 +8,9 @@ Step-by-step instructions for genome curation on a new sequencing project are li
 
 1. First, download all the consensus genomes with coverage >90% from your CZID project into one concatenated file. To do this, click on the box to the left of each sequence you wish to select in the folder, then (once you have selected all you wish to include) click the 'Download' cloud button to download, and choose the following option:
 
-![](images/downloadA.png)
+<img src="images/downloadA.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
 
 ---
 
