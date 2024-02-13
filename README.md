@@ -108,22 +108,23 @@ The above script produces the following outputs:
   - First, check for any insertions. To do this, search the "refseq" column for any dashes. **All insertions should be visible as a dash in the refseq column.** If you find any, you will notice that the "position" column continues its sequence from top to bottom. This is incorrect because that position should reflect the nucleotide identity of the reference genome, and there is no reference nucleotide at that place. To amend this, you should insert a row for each dash, type the word "insert" in the position column, and copy the consensus genome information into that row. Then, you should realign the "position" column so the numbering resumes after the insertion.
     - Here is an example of a sequence that needs an insertion to be called (between position 26493 and 26494):
     
-       <img src="images/needs_insertion.png" alt="insertemut"" style="float: left; margin-right" width = "300" />
+       <img src="images/needs_insertion.png" alt="insertemut" style="float: left; margin-right" width = "500" />
     
     
   - And here is how you would edit it:
   
-     <img src="images/amended_insertion.png" alt="insertion" style="float: left; margin-right" width = "300" />
+     <img src="images/amended_insertion.png" alt="insertion" style="float: left; margin-right" width = "500" />
     
   - After resolving any insertions (they are not super common), scroll down the "flagN", "flagAmbiguous", and "flag_privateSNP" columns for any values of 1 and examine these genome positions in Geneious. 
     - If the nucleotide is marked as "N" or "Ambiguous"", you can manually resolve it by changing the basepair in the "cns_manual" column to an accurate identity. Here are some rules for making a call:
     - If the basepair is flagged as "N", and has fewer than 10 reads at that site, you can manually edit it if there are 3 or more reads at that site which ALL agree with the reference genome. 
     - If the basepair is flagged as "N", and has MORE than 10 reads per site, you can manually edit it to the reference genome if 95% or more of the reads at that site match to the reference. Note that you can visualize the percent of each nucleotide per genome position in the "Statistics" tab of Geneious, but you have to be sure to highlight the column at the top of the consensus genome so that you first see an arrow from the cursor before the highlight. It will give you a read-out like this: 
-          <img src="images/geneious-highlight-right.png" alt="geneious" style="float: left; margin-right" width = "300" />
+
+<img src="images/geneious-highlight-right.png" alt="geneious" style="float: left; margin-right" width = "500" />
       
     - Note that if you see claims of 100% of a given nucleotide upon highlight, you likely did not highlight the column correctly. Here is the same column highlighted incorrectly because I did not wait for the arrow to materialize above the consensus genome:  
     
-          <img src="images/geneious-highlight-wrong.png" alt="geneious2" style="float: left; margin-right" width = "300" />
+<img src="images/geneious-highlight-wrong.png" alt="geneious2" style="float: left; margin-right" width = "500" />
     
     - If the basepair is flagged as "N" and there are fewer than 3 reads at that site, or if you would be changing it to a mutation, or if it has <10 reads with any disagreement at all, it should be left as "N".
     - If the basepair is flagged as an Ambiguity, you can resolve this manually in the same way: for ambiguities, there are no hard rules about number of reads, but you should only resolve the ambiguity if you are 100% confident that the selected conclusion is erroneous. In general, you will find that >75% of the nucleotides match the resolved result, but it is okay to resolve at lower proportions if you feel confident about the outcome.
