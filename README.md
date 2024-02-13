@@ -123,6 +123,7 @@ The above script produces the following outputs:
     - If the basepair is flagged as a private mutation, it is likely going to be correct as is. The only mutations flagged here are not reversions and also not listed in the named mutation database (all of these were reverted to N in step 9). You will likely just be confirming that this looks correct, so I don't anticipate you making many changes here. When you examine these, if the mutation is not well supported, remember that it is always safest to revert to "N." Also, please don't be shy to ask to help!
   - Continue this process until you have examined ALL the Ns, Ambiguities, and private mutations in the genome, then save the "SEQNAME_all_manual.tsv" file.
 
+
 ---
 
 12. Once you have completed the above process for all genomes, from terminal in the parent folder, pull the manually edited tsvs from each genome subfolder into the parent folder, using this script:
