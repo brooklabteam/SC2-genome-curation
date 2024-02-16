@@ -88,6 +88,9 @@ For the Oct_01 example, subsetting the metadata file that Aina has already provi
 ```
     sh -e loop-COVID-seq.txt 
 ```
+
+If running this process in Windows, save the loop-COVID-seq-windows.txt file as a Windows Batch file (.bat). Cd into the parent folder and run the new loop-COVID-seq-windows.bat file.
+
 The above script produces the following outputs:
 - A summary file, "sequence_summary.csv", that summarizes the following information across each genome in the dataset: ID_Viro, seq_name, total_reads, coverage, n_missing, Ct, sample_collection_date, avg_depth, totN, totAmbiguous, totSNP.
 - A more detailed summary file, "seq_check_manual.csv", that lists all the positions of the Ns, Ambiguities, and SNPs for each genome in the project. 
@@ -146,6 +149,17 @@ Note that "path_to_folder" should be replaced with the path to your parent direc
 cp /Users/carabrook/Developer/COVID-Madagascar/ARTIC5/*_MN908947.3/*_manual.tsv .
 ```
 
+In Windows, once you have completed the above process for all genomes, edit the post-geneious-script.txt file with the appropriate path_to_folder in the following section of the script:
+```
+@echo off
+for /d %%D in ("%cd%\*") do (
+    for %%F in ("%%D\*_manual.tsv") do (
+        copy "%%F" "path_to_folder\manual-tsv\"
+    )
+)
+```
+Then, save the post-geneious-script.txt file as a Windows Batch file (.bat) and run in terminal.
+
 *A tip for command line coding*: The above is telling the computer to "copy" ALL of the files ending in _manual.tsv (that's the asterisk) from ALL of the sub-folders ending in _output to the folder where your cursor is currently located (manual-tsv). The space followed by the period (" .") means copy it here, to the folder I am currently located in. You could specify the path to this location--the current script is just a shortcut.
 
 Of course, you COULD drag all the files into the folder manually, but it is best to practice the command line code.
@@ -159,6 +173,8 @@ cat *tsv > all_manual.tsv
 mkdir consensus-manual
 
 ```
+
+If using Windows, this step is completed by running the post-geneious-script.bat file.
 
 ---
 
